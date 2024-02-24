@@ -50,7 +50,7 @@ shutdown -r now
 
     # -A INPUT -i lo -j ACCEPT
     # -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-    # -A INPUT -s 78.83.143.16/28 -p tcp -m tcp --dport 22 -j ACCEPT
+    # -A INPUT -s 0.0.0.0/28 -p tcp -m tcp --dport 22 -j ACCEPT
     # -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
     # -A INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
     # -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
