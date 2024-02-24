@@ -11,7 +11,7 @@ sed -i "s/PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
 # sed -i 's/#DefaultTasksMax=15%/DefaultTasksMax=75%/g' /etc/systemd/system.conf
 
 tdnf -y update
-tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils # traceroute wireshark
+tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils bindutils# traceroute wireshark
 
 
 systemctl disable iptables
@@ -71,8 +71,11 @@ shutdown -r now
 # Name=eth0
 
 # [Network]
-# Address=192.168.10.120/24
-# Gateway=192.168.10.1
+# DHCP=no
+# Address=192.168.1.10/24
+# Gateway=192.168.1.1
+# Domains=domain.local
+# DNS=192.168.1.71
 
 # chmod o+r /etc/systemd/network/10-static-en.network
 #  -----------------------------------------------------------------------------------------------
