@@ -11,7 +11,8 @@ sed -i "s/PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
 # sed -i 's/#DefaultTasksMax=15%/DefaultTasksMax=75%/g' /etc/systemd/system.conf
 
 tdnf -y update
-tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils bindutils# traceroute wireshark
+tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils 
+# tdnf -y install traceroute wireshark  bindutils
 
 
 systemctl disable iptables
