@@ -21,8 +21,8 @@ systemctl stop iptables
 systemctl enable docker
 systemctl start docker
 
-echo "blacklist piix4_smbus" > /etc/modprobe.d/blacklist.conf
-echo "blacklist i2c_piix4" > /etc/modprobe.d/blacklist.conf
+echo "blacklist piix4_smbus" >> /etc/modprobe.d/blacklist.conf
+echo "blacklist i2c_piix4" >> /etc/modprobe.d/blacklist.conf
 
 # fix audit 
 # dmesg | grep overflow
