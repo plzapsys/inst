@@ -7,18 +7,12 @@ sed -i "s/PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
 
 sed -i 's/WAIT_OPTIONS="--wait 1 --wait-interval 20000"/WAIT_OPTIONS="--wait 1"/g' /etc/systemd/scripts/iptables
 
-
-sed -i "s/DHCP=ues/DHCP=no/g" /etc/systemd/network/99-dhcp-en.network
-
+# sed -i "s/DHCP=ues/DHCP=no/g" /etc/systemd/network/99-dhcp-en.network
 
 echo "" >> /etc/systemd/network/50-static-en.network
 echo "" >> /etc/systemd/network/50-static-en.network
 echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
-
-
-curl https://raw.githubusercontent.com/plzapsys/inst/main/photon_haproxy.sh | sh
-
 
 tdnf -y update
 tdnf -y install wget tar mc git rsync nfs-utils tcpdump netcat
