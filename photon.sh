@@ -76,6 +76,11 @@ shutdown -r now
 # iptables --list
 # iptables -L
 
+# --------- for JITS ------------------------
+# sed -i 's/#DefaultLimitNOFILE=1024:524288/DefaultLimitNOFILE=65000/g' /etc/systemd/system.conf
+# sed -i 's/#DefaultLimitNPROC=/DefaultLimitNPROC=65000/g' /etc/systemd/system.conf
+# sed -i 's/#DefaultTasksMax=15%/DefaultTasksMax=75%/g' /etc/systemd/system.conf
+
 # --------------Command PhotonOS------------------------------------------------------------------
 # https://medium.com/@lubomir-tobek/useful-basic-photon-os-commands-000011b53b61
 # https://medium.com/@lubomir-tobek/useful-advanced-photon-os-commands-troubleshooting-85c6e4564555
