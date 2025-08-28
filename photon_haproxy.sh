@@ -18,6 +18,9 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZAz6hJzLPHL6B+6jAkSg6JiuXT64++fjviR
 wget -P /etc/profile.d/ https://raw.githubusercontent.com/plzapsys/inst/main/profile_show.sh
 chmod +x /etc/profile.d/profile_show.sh
 
+# install link from girhub
+# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon_haproxy.sh | sh
+
 chage -I -1 -m 0 -M 99999 -E -1 root
 # ----------- iptables ----------------------------------------
 # Disable Firewall
