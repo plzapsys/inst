@@ -84,5 +84,6 @@ echo "#Enable non-local IP bind" >> /etc/sysctl.d/55-keepalived.conf
 echo "net.ipv4.ip_nonlocal_bind = 1" >> /etc/sysctl.d/55-keepalived.conf
 
 # -- restart 
-history -c
-shutdown -r now
+# history -c
+
+# shutdown -r now
