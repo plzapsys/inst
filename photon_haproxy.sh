@@ -17,6 +17,7 @@ echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 
+curl https://raw.githubusercontent.com/plzapsys/inst/main/photon_haproxy.sh | sh
 
 
 tdnf -y update
@@ -82,8 +83,3 @@ echo "#Enable IPv4 Forwarding" >> /etc/sysctl.d/55-keepalived.conf
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.d/55-keepalived.conf
 echo "#Enable non-local IP bind" >> /etc/sysctl.d/55-keepalived.conf
 echo "net.ipv4.ip_nonlocal_bind = 1" >> /etc/sysctl.d/55-keepalived.conf
-
-# -- restart 
-# history -c
-
-# shutdown -r now
