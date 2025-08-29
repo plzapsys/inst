@@ -1,18 +1,17 @@
 
-
-
 timedatectl set-timezone Europe/Sofia
 
 # sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-dnf install -y wget which curl
-dnf update -y ca-certificates
-dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+# dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
 # dnf clean all
+dnf config-manager --set-enabled crb
+dnf update -y ca-certificates
 dnf update -y
-dnf install -y 'dnf-command(config-manager)'
-dnf install -y dnf-plugins-core
+# dnf install -y 'dnf-command(config-manager)'
+# dnf install -y dnf-plugins-core
 # dnf config-manager --set-enabled powertools
 # dnf install -y dnf-utils iscsi-initiator-utils
+dnf install -y wget which curl
 dnf install -y iftop htop lsof bzip2 bind-utils mtr 
 dnf install -y mc nano vim net-tools open-vm-tools zip unzip pv git rsync sshpass 
 dnf install -y nfs-utils
