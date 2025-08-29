@@ -3,7 +3,7 @@
 
 timedatectl set-timezone Europe/Sofia
 
-sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+# sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 dnf install -y wget which curl
 dnf update -y ca-certificates
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
@@ -48,4 +48,4 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZAz6hJzLPHL6B+6jAkSg6JiuXT64++fjviR
 
 history -c
 
-shutdown -r now
+#shutdown -r now
