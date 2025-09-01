@@ -1,10 +1,10 @@
-
 timedatectl set-timezone Europe/Sofia
 # timedatectl 
 # sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
 # dnf clean all
-dnf config-manager --set-enabled crb
+
+dnf install epel-release -y
 dnf update -y ca-certificates
 dnf update -y
 dnf install -y wget which curl
