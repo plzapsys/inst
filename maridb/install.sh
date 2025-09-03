@@ -22,6 +22,8 @@ systemctl status mariadb
 
 mariadb-secure-installation
 
+# view log maridb 
+journalctl -xeu mariadb
 
 # /etc/security/limits.conf
 echo "" >> /etc/security/limits.conf
