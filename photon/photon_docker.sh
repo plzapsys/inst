@@ -17,7 +17,7 @@ tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdu
 
 
 # install link from girhub
-# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon_docker.sh | sh
+# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/photon_docker.sh | sh
 
 systemctl disable iptables
 systemctl stop iptables
