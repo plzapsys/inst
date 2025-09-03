@@ -12,9 +12,16 @@ echo "" >> /etc/systemd/network/50-static-en.network
 echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
+# tdnf check-update
+# tdnf clean all
+# tdnf distro-sync
+
 tdnf -y update
-tdnf -y install wget htop tar mc git rsync nfs-utils tcpdump netcat
+tdnf -y install wget htop tar mc git rsync nfs-utils tcpdump netcat cronie
 # tdnf -y install traceroute wireshark  bindutils docker docker-compose
+
+systemctl enable crond
+systemctl start crond
 
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZAz6hJzLPHL6B+6jAkSg6JiuXT64++fjviRknBcUWMwhBSFTWPWHOXXrHBkBpoMZ3MOF3WKZTsAMZRgtNq7h1pk4D0m25Wb2i3bRUTKntao7tQ1SUETjnnBt6w311RBPUcm/YZsVoycZZeGTtH8Gn/6Wi/RviD2NmhgyRfoFaDDT+DKOp/TC2/J/kbWCPBlIAbGQn/dUUoPLA9eEQxuG6nowrx1Rv4/317LW3Fmg0cP7nHiKx3nXkrT9VwBV6w6uxmMRtiy6Nvg9OnzIG4gCo1B5nHWmsbOBfUPQKks6UAbcyaOF+lc65iWge8mpLOhl5M9javWjlI8s/g41H6MTRCkpch0mkEQuK3BOKkGR356x9BugpyMWVhqhSjcP47w6L+/qytJR/8eZwn6Y8NWNwLiVqAQkQYZCr6WHZAE6s5fs1XrHb3WgyI1fCRhfITSZYjRAl/uJIFkjQMeUtmPiW0sRyRJTgIy6EaFRKIjbTuYACHXK1fqvIcNjbu/MojXs= usname" > /root/.ssh/authorized_keys
 
@@ -27,6 +34,19 @@ chage -I -1 -m 0 -M 99999 -E -1 root
 # Restart
 history -c
 shutdown -r now
+
+
+# ---- crontab ---------------------
+# crontab -e
+# i
+# Paste => 15 00 * * * /mnt/container/scripts/getcert.sh >/mnt/container/scripts/log/getcert_15_00.log 2>&1
+# esc
+# :wq
+# systemctl restart crond
+# crontab -l
+
+#  minute hour dayofmonth month  dayofweek
+#  0-59   0-23 1-31       1-12   0-7, where 0 or 7 is Sunday, 1 is Monday, and so on
 
 
 # ----------- iptables ----------------------------------------
@@ -115,8 +135,5 @@ shutdown -r now
 # rpm -Uvh https://repo.zabbix.com/zabbix/6.4/rhel/9/x86_64/zabbix-release-6.4-1.el9.noarch.rpm
 # tdnf install zabbix-agent2
 # usermod -aG docker zabbix
-
-
-
 
 
