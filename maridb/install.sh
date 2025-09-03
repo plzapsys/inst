@@ -21,7 +21,7 @@ journalctl -xeu mariadb
 # Io_uring enabling
 # create file 
 touch /etc/sysctl.d/io_uring.conf
-echo > "kernel.io_uring_disabled=0"
+echo "kernel.io_uring_disabled=0" >> /etc/sysctl.d/io_uring.conf
 sysctl --system
 
 # /etc/security/limits.conf
@@ -33,6 +33,12 @@ sysctl -p
 exit
 # login on console
 ulimit -n
+
+# fix unset environment variable evaluates to an empty string
+touch  /etc/systemd/system/mariadb.service.d/override.conf
+echo "[Service]" >> /etc/systemd/system/mariadb.service.d/override.conf
+echo "Environment="MYSQLD_OPTS="" >> /etc/systemd/system/mariadb.service.d/override.conf
+echo "Environment="_WSREP_NEW_CLUSTER="" >> /etc/systemd/system/mariadb.service.d/override.conf
 
 # Enable Remote access 
 sudo sed -i 's/#bind-address=0.0.0.0/bind-address=0.0.0.0/g' /etc/my.cnf.d/server.cnf
