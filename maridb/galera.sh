@@ -27,10 +27,14 @@ wsrep_node_name="Node-01"         # Give each node a unique name
 wsrep_provider_options="gcache.size=10G;gcache.recover=yes;gcs.fc_limit=500000;"
 
 #---------------------------------------------------------------------
+# stop mariadb on all node
+sudo systemctl stop mariadb
+
 # 3. On your first node (e.g., Node-01)
+sudo systemctl stop mariadb
 galera_new_cluster
 
-# -4 On Node-02 and Node-03
+# 4. On Node-02 and Node-03
 systemctl start mariadb
 
 # ---------- Monitoring Cluster Status ------------------------------------------
