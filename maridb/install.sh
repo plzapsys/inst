@@ -37,3 +37,69 @@ grant all privileges on DATABASE_NAME.* TO 'USER_NAME'@'localhost' identified by
 grant all privileges on DATABASE_NAME.* TO 'USER_NAME'@'%' identified by 'PASSWORD';
 #After modifying the MariaDB grant tables, execute the following command in order to apply the changes:
 flush privileges;
+
+# ----- backup -----------------------------------------
+BACKUP1="solar-$(date '+%Y-%m-%d_%H:%M:%S')";
+mariadb-dump \
+  --user=user \
+  --password=password \
+  --host=192.168.23.110 \
+  --port=53306 \
+  --databases solar \
+  --result-file=/mnt/solar.sql \
+  --single-transaction \
+  --routines \
+  --triggers \
+  --events \
+  --hex-blob \
+  --no-create-db \
+  --skip-ssl
+
+# ---- convert ----------------------------------
+# remove DEFAULT CHARSET
+sed -e 's/DEFAULT CHARSET=utf8//g' -i /mnt/solar.sql
+# ------ restore -------------------------------------------------
+mariadb -u root -p solar < solar.sql
+
+# -------------------- check Character ---------------------------------
+# Determine Current Character Set & Collation
+SELECT
+	s.SCHEMA_NAME,
+	s.DEFAULT_CHARACTER_SET_NAME,
+	s.DEFAULT_COLLATION_NAME,
+	t.TABLE_NAME,
+	t.TABLE_COLLATION,
+	ccsa.CHARACTER_SET_NAME,
+	c.COLUMN_NAME,
+	c.CHARACTER_SET_NAME,
+	c.COLLATION_NAME
+FROM
+	information_schema.SCHEMATA s
+LEFT JOIN information_schema.TABLES t ON
+	s.SCHEMA_NAME = t.TABLE_SCHEMA
+LEFT JOIN information_schema.COLLATION_CHARACTER_SET_APPLICABILITY ccsa ON
+	t.TABLE_COLLATION = ccsa.COLLATION_NAME
+LEFT JOIN information_schema.COLUMNS c ON
+	s.SCHEMA_NAME = c.TABLE_SCHEMA
+	AND t.TABLE_NAME = c.TABLE_NAME
+WHERE
+	s.schema_name = 'demo' ORDER BY COLLATION_NAME DESC;
+# -----------------------------------------------------------------------------
+
+# -- database
+ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+# -- for each table (also converts columns within table)
+# -- USE
+ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# ---------------------------------------------------------------------------------------
+
+SELECT CONCAT('ALTER TABLE `', table_name, '` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;')
+FROM information_schema.tables
+WHERE table_schema = 'your database name here'
+  AND table_type = 'BASE TABLE';
+
+The output of this query you can run again to change the tables
+# ----------------------------------------------------------------------------
+
+
+
