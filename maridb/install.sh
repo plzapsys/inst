@@ -55,6 +55,11 @@ mariadb-dump \
   --no-create-db \
   --skip-ssl
 
+
+# if import solar to testsolar or develosolar 
+sed -e 's/USE `solar`;/USE `testsolar`;/g' -i /mnt/solar.sql
+sed -e 's/USE `solar`;/USE `develosolar`;/g' -i /mnt/solar.sql
+
 # ---- convert ----------------------------------
 # remove DEFAULT CHARSET
 sed -e 's/DEFAULT CHARSET=utf8//g' -i /mnt/solar.sql
