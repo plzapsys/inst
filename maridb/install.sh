@@ -39,6 +39,9 @@ touch  /etc/systemd/system/mariadb.service.d/override.conf
 echo "[Service]" >> /etc/systemd/system/mariadb.service.d/override.conf
 echo "Environment="MYSQLD_OPTS="" >> /etc/systemd/system/mariadb.service.d/override.conf
 echo "Environment="_WSREP_NEW_CLUSTER="" >> /etc/systemd/system/mariadb.service.d/override.conf
+systemctl daemon-reload
+service mariadb restart
+journalctl -xeu mariadb
 
 # Enable Remote access 
 sudo sed -i 's/#bind-address=0.0.0.0/bind-address=0.0.0.0/g' /etc/my.cnf.d/server.cnf
