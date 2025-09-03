@@ -38,7 +38,6 @@ galera_new_cluster
 # -4 On Node-02 and Node-03
 systemctl start mariadb
 
-# -------------------------------------
 # ---------- Monitoring Cluster Status ------------------------------------------
 # Regularly monitor your Galera Cluster to ensure its health and consistency.
 
