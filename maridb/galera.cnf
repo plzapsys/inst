@@ -40,7 +40,10 @@ systemctl start mariadb
 
 # -------------------------------------
 # check node cluster
-mysql -h 127.0.0.1 -u root -p -e "show status like 'wsrep_cluster_size'"
+
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_status'"
 
 # -------------- from Site MariaDB
 # https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-guide
