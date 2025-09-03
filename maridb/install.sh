@@ -2,19 +2,12 @@
 # dnf module list mariadb
 # dnf -qy module disable mariadb
 # dnf module reset mariadb -y
-
 curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version=11.8
 dnf config-manager --set-disabled mariadb-maxscale
 
 dnf -y repolist
 dnf install MariaDB-server MariaDB-client rsync
 mariadb -V
-
-mkdir /var/log/mariadb
-touch /var/log/mariadb/mariadb.log
-touch /var/log/mariadb/mariadb-slow.log
-chmod 644 /var/log/mariadb/mariadb.log
-chmod 644 /var/log/mariadb/mariadb-slow.log
 
 # systemctl enable --now mariadb  => only sigle Server
 systemctl start mariadb
@@ -24,6 +17,12 @@ mariadb-secure-installation
 
 # view log maridb 
 journalctl -xeu mariadb
+
+# Io_uring enabling
+# create file 
+touch /etc/sysctl.d/io_uring.conf
+echo > "kernel.io_uring_disabled=0"
+sysctl --system
 
 # /etc/security/limits.conf
 echo "" >> /etc/security/limits.conf
