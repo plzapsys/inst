@@ -22,6 +22,17 @@ systemctl status mariadb
 
 mariadb-secure-installation
 
+
+# /etc/security/limits.conf
+echo "" >> /etc/security/limits.conf
+echo "" >> /etc/security/limits.conf
+echo "* soft nofile 65535" >> /etc/security/limits.conf
+echo "* hard nofile 65535" >> /etc/security/limits.conf
+sysctl -p
+exit
+# login on console
+ulimit -n
+
 # Enable Remote access 
 sudo sed -i 's/#bind-address=0.0.0.0/bind-address=0.0.0.0/g' /etc/my.cnf.d/server.cnf
 mariadb -u root -p 
