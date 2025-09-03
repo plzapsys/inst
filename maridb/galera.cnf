@@ -31,6 +31,17 @@ wsrep_node_name="Node-01"         # Give each node a unique name
 # gcache stores the replication writeset. 10G is a good starting point.
 wsrep_provider_options="gcache.size=10G;gcache.recover=yes;gcs.fc_limit=500000;"
 
+#---------------------------------------------------------------------
+# 3. On your first node (e.g., Node-01)
+galera_new_cluster
+
+# -4 On Node-02 and Node-03
+systemctl start mariadb
+
+# -------------------------------------
+# check node cluster
+mysql -h 127.0.0.1 -u root -p -e "show status like 'wsrep_cluster_size'"
+
 # -------------- from Site MariaDB
 # https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-guide
 [mysqld]
@@ -56,12 +67,3 @@ wsrep_node_name="node1" # Must be unique for each node (e.g., node1, node2, node
 wsrep_node_address="node1_ip_address" # This node's own IP address
 
 
-#---------------------------------------------------------------------
-
-# 3. On your first node (e.g., Node-01)
-galera_new_cluster
-
-# -4 On Node-02 and Node-03
-systemctl start mariadb
-
-# -------------------------------------
