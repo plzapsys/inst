@@ -1,6 +1,3 @@
-
-
-
 # ----------------------- Install Server Zabbix ----------------------------
 # 1.
 rpm -Uvh https://repo.zabbix.com/zabbix/7.4/release/rocky/10/noarch/zabbix-release-latest-7.4.el10.noarch.rpm
@@ -23,7 +20,6 @@ grant all privileges on zabbix.* to zabbix@localhost;
 set global log_bin_trust_function_creators = 1;
 quit;
 
-
 # 6. On Zabbix server host import initial schema and data. 
 zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | mariadb --default-character-set=utf8mb4 -uzabbix -p zabbix
 
@@ -32,10 +28,8 @@ mariadb -u root -p
 set global log_bin_trust_function_creators = 0;
 quit;
 
-
 # 7. Configure the database for Zabbix server
 # Edit file /etc/zabbix/zabbix_server.conf
-
 vi /etc/zabbix/zabbix_server.conf
 DBPassword=password
 
@@ -43,7 +37,6 @@ DBPassword=password
 systemctl restart zabbix-server zabbix-agent httpd php-fpm
 # 9. Start Zabbix server and agent processes and make it start at system boot.
 systemctl enable zabbix-server zabbix-agent httpd php-fpm
-
 systemctl status zabbix-server
 
 # 10. Open Zabbix UI web page
