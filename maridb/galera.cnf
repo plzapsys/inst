@@ -39,11 +39,32 @@ galera_new_cluster
 systemctl start mariadb
 
 # -------------------------------------
-# check node cluster
+# ---------- Monitoring Cluster Status ------------------------------------------
+# Regularly monitor your Galera Cluster to ensure its health and consistency.
 
+# Expected value: the total number of nodes configured (e.g., 3).
 mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size'"
+
+# wsrep_local_state_comment / wsrep_local_state: The state of the current node.
 mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment'"
-mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_status'"
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state'"
+    # Synced (4): Node is fully synchronized and operational.
+    # Donor/Desync (2): Node is transferring state to another node.
+    # Joining (1): Node is in the process of joining the cluster.
+    # Donor/Stalled (1): Node is stalled.
+
+# wsrep_incoming_addresses: List of incoming connections from other cluster nodes.
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_incoming_addresses'"
+
+# wsrep_cert_deps_distance: Indicates flow control. A high value suggests that this node is falling behind and flow control may activate.
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_cert_deps_distance'"
+
+# wsrep_flow_control_paused: Percentage of time the node was paused due to flow control. High values indicate a bottleneck.
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_flow_control_paused'"
+
+# wsrep_local_recv_queue / wsrep_local_send_queue: Size of the receive/send queue. Ideally, these should be close to 0. Sustained high values indicate replication lag or node issues.
+mariadb -h 127.0.0.1 -u root -p -e "SHOW STATUS LIKE 'wsrep_local_recv_queue'"
+
 
 # -------------- from Site MariaDB
 # https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-guide
