@@ -12,7 +12,7 @@ echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 tdnf -y update
-tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat
+tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie
 # tdnf -y install traceroute wireshark  bindutils
 
 
@@ -24,6 +24,9 @@ systemctl stop iptables
 
 systemctl enable docker
 systemctl start docker
+
+systemctl enable crond
+systemctl start crond
 
 mkdir /mnt/container
 chmod 755 /mnt/container
