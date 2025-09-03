@@ -36,9 +36,9 @@ ulimit -n
 
 # fix unset environment variable evaluates to an empty string
 touch  /etc/systemd/system/mariadb.service.d/override.conf
-echo "[Service]" >> /etc/systemd/system/mariadb.service.d/override.conf
-echo "Environment="MYSQLD_OPTS="" >> /etc/systemd/system/mariadb.service.d/override.conf
-echo "Environment="_WSREP_NEW_CLUSTER="" >> /etc/systemd/system/mariadb.service.d/override.conf
+echo '[Service]' >> /etc/systemd/system/mariadb.service.d/override.conf
+echo 'Environment="MYSQLD_OPTS="' >> /etc/systemd/system/mariadb.service.d/override.conf
+echo 'Environment="_WSREP_NEW_CLUSTER="' >> /etc/systemd/system/mariadb.service.d/override.conf
 systemctl daemon-reload
 service mariadb restart
 journalctl -xeu mariadb
