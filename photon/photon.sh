@@ -111,7 +111,6 @@ shutdown -r now
 # Finding version of Photon OS
 # cat /etc/photon-release
 
-
 # --------- Platform -------------------------------------------------------------------------------------------
 # tdnf -y install openjdk17
 # mkdir /mnt/general
@@ -131,9 +130,5 @@ shutdown -r now
 # ipconfig /flushdns
 # ----------------------------------------------------------------
 
-# ZABBIX agent2
-# rpm -Uvh https://repo.zabbix.com/zabbix/6.4/rhel/9/x86_64/zabbix-release-6.4-1.el9.noarch.rpm
-# tdnf install zabbix-agent2
-# usermod -aG docker zabbix
 
 
