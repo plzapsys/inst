@@ -7,7 +7,7 @@ curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -
 dnf config-manager --set-disabled mariadb-maxscale
 
 dnf -y repolist
-dnf install MariaDB-server MariaDB-client
+dnf install MariaDB-server MariaDB-client rsync
 mariadb -V
 
 mkdir /var/log/mariadb
