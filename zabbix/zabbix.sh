@@ -50,6 +50,8 @@ tdnf clean all
 tdnf update
 tdnf install zabbix-agent2
 
+dnf install zabbix-get
+
 systemctl restart zabbix-agent2
 systemctl enable zabbix-agent2
 
