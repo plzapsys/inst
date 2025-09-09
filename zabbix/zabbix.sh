@@ -70,6 +70,9 @@ sed -i "s/Hostname=Zabbix server/Hostname=HAProxyP43/g" /etc/zabbix/zabbix_agent
 
 sed -i "s|# Plugins.Docker.Endpoint=unix:///var/run/docker.sock|Plugins.Docker.Endpoint=unix:///var/run/docker.sock|g" /etc/zabbix/zabbix_agent2.d/plugins.d/docker.conf
 systemctl restart zabbix-agent2
+
+zabbix_get -s 127.0.0.1 -k docker.info
+
 tail -f /var/log/zabbix/zabbix_agent2.log
 
 
