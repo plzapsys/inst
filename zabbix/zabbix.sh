@@ -56,7 +56,7 @@ systemctl restart zabbix-agent2
 systemctl enable zabbix-agent2
 
 # set IP on Zabbix server
-sed -i "s/Server=127.0.0.1/Server=192.168.53.47/g" /etc/zabbix/zabbix_agent2.conf
+sed -i "s/Server=127.0.0.1/Server=127.0.0.1,192.168.53.47/g" /etc/zabbix/zabbix_agent2.conf
 
 # set Hostname 
 ### Option: Hostname
@@ -64,6 +64,11 @@ sed -i "s/Server=127.0.0.1/Server=192.168.53.47/g" /etc/zabbix/zabbix_agent2.con
 #	Required for active checks and must match hostnames as configured on the server.
 #	Value is acquired from HostnameItem if undefined.
 sed -i "s/Hostname=Zabbix Server/Hostname=HAProxyP43/g" /etc/zabbix/zabbix_agent2.conf
+
+sed -i "s/# Plugins.Docker.Endpoint=unix:///var/run/docker.sock/Plugins.Docker.Endpoint=unix:///var/run/docker.sock/g" /etc/zabbix/zabbix_agent2.d/plugins.d/docker.conf
+
+tail -f /var/log/zabbix/zabbix_agent2.log
+
 
 
 # ------------ RockyLinux linux
