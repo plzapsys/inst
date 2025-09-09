@@ -59,7 +59,7 @@ usermod -aG docker zabbix
 
 # set IP on Zabbix server
 sed -i "s/Server=127.0.0.1/Server=127.0.0.1,192.168.53.47/g" /etc/zabbix/zabbix_agent2.conf
-sed -i "s/ServerActive=127.0.0.1/ServerActive=127.0.0.1,192.168.53.47/g" /etc/zabbix/zabbix_agent2.conf
+sed -i "s/ServerActive=127.0.0.1/ServerActive=192.168.53.47/g" /etc/zabbix/zabbix_agent2.conf
 
 # set Hostname 
 ### Option: Hostname
