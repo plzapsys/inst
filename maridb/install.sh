@@ -34,6 +34,9 @@ exit
 # login on console
 ulimit -n
 
+# add custom config 
+wget -P /etc/my.cnf.d/ https://raw.githubusercontent.com/plzapsys/inst/main/maridb/custom.cnf
+
 # fix unset environment variable evaluates to an empty string
 touch  /etc/systemd/system/mariadb.service.d/override.conf
 echo '[Service]' >> /etc/systemd/system/mariadb.service.d/override.conf
