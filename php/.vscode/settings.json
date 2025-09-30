@@ -1,1 +1,5 @@
 
+{
+    "php.validate.executablePath": "/usr/bin/php",
+    "php.debug.executablePath": "/usr/bin/php"
+}
