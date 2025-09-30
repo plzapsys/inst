@@ -32,6 +32,10 @@ touch /mnt/sources/site-01/log/xdebug.log
 
 chown nginx:nginx /mnt/sources -R
 
+mkdir /mnt/sources/site-01/.vscode
+cd /mnt/sources/site-01/.vscode
+# wget ....
+
 # http://IP-HOST:8001
 # https://IP-HOST:44301
 
