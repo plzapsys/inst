@@ -17,7 +17,7 @@ chown nginx:nginx /usr/share/nginx/html -R
 # test nginx
 # http://IP-HOST
 
-# -------- create strukture site-01 ------------------
+# -------- create structure site-01 ------------------
 mkdir /mnt/sources
 mkdir /mnt/sources/site-01
 mkdir /mnt/sources/site-01/log
