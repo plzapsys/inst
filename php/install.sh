@@ -48,3 +48,10 @@ echo "<?php phpinfo() ?>" > /usr/share/nginx/html/info.php
 # test PHP
 # http://IP-HOST/info.php
 
+
+#--------- Install php composer ------------------------------------------------------------
+wget https://getcomposer.org/installer -O composer-installer.php
+php composer-installer.php --filename=composer --install-dir=/usr/local/bin
+composer --version
+
+
