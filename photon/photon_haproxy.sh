@@ -11,7 +11,7 @@ echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 tdnf -y update
-tdnf -y install wget mc tcpdump netcat rsync cronie chronyd
+tdnf -y install wget mc tcpdump netcat rsync cronie chrony
 
 systemctl enable --now chronyd
 # tdnf -y install docker docker-compose traceroute wireshark htop bindutils tar git rsync nfs-utils
