@@ -16,7 +16,7 @@ tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdu
 # tdnf -y install traceroute wireshark  bindutils
 systemctl enable --now chronyd
 
-# install link from girhub
+# install link from github
 # curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/photon_docker.sh | sh
 
 systemctl disable iptables
@@ -30,6 +30,7 @@ systemctl start crond
 
 mkdir /mnt/container
 chmod 755 /mnt/container
+ln -s /mnt/container /root/container
 
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZAz6hJzLPHL6B+6jAkSg6JiuXT64++fjviRknBcUWMwhBSFTWPWHOXXrHBkBpoMZ3MOF3WKZTsAMZRgtNq7h1pk4D0m25Wb2i3bRUTKntao7tQ1SUETjnnBt6w311RBPUcm/YZsVoycZZeGTtH8Gn/6Wi/RviD2NmhgyRfoFaDDT+DKOp/TC2/J/kbWCPBlIAbGQn/dUUoPLA9eEQxuG6nowrx1Rv4/317LW3Fmg0cP7nHiKx3nXkrT9VwBV6w6uxmMRtiy6Nvg9OnzIG4gCo1B5nHWmsbOBfUPQKks6UAbcyaOF+lc65iWge8mpLOhl5M9javWjlI8s/g41H6MTRCkpch0mkEQuK3BOKkGR356x9BugpyMWVhqhSjcP47w6L+/qytJR/8eZwn6Y8NWNwLiVqAQkQYZCr6WHZAE6s5fs1XrHb3WgyI1fCRhfITSZYjRAl/uJIFkjQMeUtmPiW0sRyRJTgIy6EaFRKIjbTuYACHXK1fqvIcNjbu/MojXs= usname" > /root/.ssh/authorized_keys
 
