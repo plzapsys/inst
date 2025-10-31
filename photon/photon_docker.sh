@@ -12,7 +12,7 @@ echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 tdnf -y update
-tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chronyd
+tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chrony
 # tdnf -y install traceroute wireshark  bindutils
 systemctl enable --now chronyd
 
