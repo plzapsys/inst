@@ -17,7 +17,7 @@ echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 # tdnf distro-sync
 
 tdnf -y update
-tdnf -y install wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chronyd
+tdnf -y install wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chrony
 # tdnf -y install traceroute wireshark  bindutils docker docker-compose
 
 systemctl enable --now chronyd
