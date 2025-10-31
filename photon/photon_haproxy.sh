@@ -20,7 +20,7 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZAz6hJzLPHL6B+6jAkSg6JiuXT64++fjviR
 wget -P /etc/profile.d/ https://raw.githubusercontent.com/plzapsys/inst/main/profile_show.sh
 chmod +x /etc/profile.d/profile_show.sh
 
-# install link from girhub
+# install link from github
 # curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/photon_haproxy.sh | sh
 
 chage -I -1 -m 0 -M 99999 -E -1 root
@@ -70,6 +70,7 @@ echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.d/55-keepalived.conf
 echo "#Enable non-local IP bind" >> /etc/sysctl.d/55-keepalived.conf
 echo "net.ipv4.ip_nonlocal_bind = 1" >> /etc/sysctl.d/55-keepalived.conf
 
+ln -s /etc/haproxy /root/haproxy
 # -- restart 
 history -c
 shutdown -r now
