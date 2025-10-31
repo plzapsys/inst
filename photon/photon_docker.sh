@@ -12,9 +12,9 @@ echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
 echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 tdnf -y update
-tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie
+tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chronyd
 # tdnf -y install traceroute wireshark  bindutils
-
+systemctl enable --now chronyd
 
 # install link from girhub
 # curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/photon_docker.sh | sh
