@@ -19,8 +19,8 @@ systemctl enable --now chronyd
 # install link from github
 # curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/photon_docker.sh | sh
 
-systemctl disable iptables
-systemctl stop iptables
+# systemctl disable iptables
+# systemctl stop iptables
 
 systemctl enable docker
 systemctl start docker
