@@ -6,10 +6,6 @@ sed -i "s/AllowTcpForwarding no/AllowTcpForwarding yes/g" /etc/ssh/sshd_config
 sed -i "s/PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
 sed -i 's/WAIT_OPTIONS="--wait 1 --wait-interval 20000"/WAIT_OPTIONS="--wait 1"/g' /etc/systemd/scripts/iptables
 # sed -i "s/DHCP=yes/DHCP=no/g" /etc/systemd/network/99-dhcp-en.network
-echo "" >> /etc/systemd/network/50-static-en.network
-echo "" >> /etc/systemd/network/50-static-en.network
-echo "[DHCP]" >> /etc/systemd/network/50-static-en.network
-echo "UseDNS=false" >> /etc/systemd/network/50-static-en.network
 
 tdnf -y update
 tdnf -y install docker docker-compose wget htop tar mc git rsync nfs-utils tcpdump netcat cronie chrony
