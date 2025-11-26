@@ -7,7 +7,9 @@ sed -i "s/PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
 # systemctl restart sshd
 sed -i 's/WAIT_OPTIONS="--wait 1 --wait-interval 20000"/WAIT_OPTIONS="--wait 1"/g' /etc/systemd/scripts/iptables
 # sed -i "s/DHCP=yes/DHCP=no/g" /etc/systemd/network/99-dhcp-en.network
+sudo sed -i '/^IPv6AcceptRA=no/aLinkLocalAddressing=no' /etc/systemd/network/50-static-en.network
 sudo sed -i '/^Gateway=/i\[Route]\nDestination=0.0.0.0/0' /etc/systemd/network/50-static-en.network
+
 # tdnf check-update
 # tdnf clean all
 # tdnf distro-sync
