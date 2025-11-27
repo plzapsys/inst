@@ -1,11 +1,19 @@
 #!/bin/bash
 
-# ./1-setup-eth1-static-ip.sh d3node 192.168.30 eth1
+# dsw1
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d1node 192.168.30 eth1 30 | sh
+
+# dsw2
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d2node 192.168.30 eth1 40 | sh
+
+# dsw3
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d3node 192.168.30 eth1 20 | sh
 
 # 1. Приемане на параметри
 NODE_PREFIX=$1  # Първи параметър: d3node
 BASE_NETWORK=$2 # Втори параметър: 192.168.30
 INTERFACE_CLUSTER=$3 # Трети параметър: eth1
+NODE_IP=$4 # IP да започва с 20 => 192.168.30.21 за първия нод
 
 NETMASK="/24"
 
@@ -37,7 +45,7 @@ if ! [[ "$NODE_NUMBER" =~ ^[1-6]$ ]]; then
 fi
 
 # Изчисляване на последния октет: X + 20 (напр. 1 -> 21)
-LAST_OCTET=$((NODE_NUMBER + 20))
+LAST_OCTET=$((NODE_NUMBER + NODE_IP))
 NODE_IP_CLUSTER="${BASE_NETWORK}.${LAST_OCTET}${NETMASK}"
 
 NETWORK_FILE="/etc/systemd/network/60-static-eth1.network"
