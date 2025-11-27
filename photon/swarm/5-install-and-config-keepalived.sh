@@ -1,5 +1,16 @@
 #!/bin/bash
 
+
+# dsw1
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/5-install-and-config-keepalived.sh 192.168.23.21 192.168.23.22 192.168.23.33 192.168.23.20/24 20 | sh
+
+# dsw2
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/5-install-and-config-keepalived.sh 192.168.43.41 192.168.43.42 192.168.43.43 192.168.43.40/24 40 | sh
+
+# dsw3
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/5-install-and-config-keepalived.sh 192.168.33.31 192.168.33.32 192.168.33.33 192.168.33.30/24 30 | sh
+
+
 # Задължителни параметри
 NODE1_IP=$1  # MASTER (Приоритет 150)
 NODE2_IP=$2  # BACKUP (Приоритет 100)
