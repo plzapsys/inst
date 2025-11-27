@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # dsw1
-#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d1node 192.168.30 eth1 30 | sh
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d1node 192.168.30 eth1 20 | sh
 
 # dsw2
 #  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d2node 192.168.30 eth1 40 | sh
 
 # dsw3
-#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d3node 192.168.30 eth1 20 | sh
+#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d3node 192.168.30 eth1 30 | sh
 
 # 1. Приемане на параметри
 NODE_PREFIX=$1  # Първи параметър: d3node
