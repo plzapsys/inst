@@ -16,8 +16,8 @@ log_error() {
 # --- 2. ПРОВЕРКА НА ПАРАМЕТРИТЕ ---
 if [ -z "$NODE_PREFIX" ] || [ -z "$BASE_NETWORK" ]; then
     log_error "Липсват задължителни параметри."
-    echo "Употреба: $0 <NODE_PREFIX> <BASE_NETWORK>"
-    echo "Пример: $0 d3node 192.168.30"
+    echo "Употреба: $0 <NODE_PREFIX> <BASE_NETWORK> <INTERFACE_CLUSTER>"
+    echo "Пример: $0 d3node 192.168.30 eth1"
     exit 1
 fi
 
