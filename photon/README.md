@@ -1,2 +1,1 @@
 
--- journalctl -xeu docker.service
