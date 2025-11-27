@@ -9,43 +9,45 @@ docker swarm init \
   --data-path-addr 192.168.30.21 \
   --advertise-addr 192.168.30.21
 
-# manager 
+# for manager 
 docker swarm join-token manager
 
+export SWARM_TOKEN="......"
 # node2
 docker swarm join \
-  --token .....  \
+  --token $SWARM_TOKEN  \
   --data-path-addr 192.168.30.22 \
   --advertise-addr 192.168.30.22 \
   192.168.30.21:2377
  
 # node3
 docker swarm join \
-  --token .....  \
+  --token $SWARM_TOKEN  \
   --data-path-addr 192.168.30.23 \
   --advertise-addr 192.168.30.23 \
   192.168.30.21:2377
   
 # ---------------------------------------------------------------------------------------------------
 # for worker 
-	docker swarm join-token worker
+docker swarm join-token worker
 
+export SWARM_TOKEN="......"
 # node4
 docker swarm join \
-  --token ..... \
+  --token $SWARM_TOKEN \
   --data-path-addr 192.168.30.24 \
   --advertise-addr 192.168.30.24 \
   192.168.30.21:2377
 
 # node5
 docker swarm join \
-  --token ..... \
+  --token $SWARM_TOKEN\
   --data-path-addr 192.168.30.25 \
   --advertise-addr 192.168.30.25 \
   192.168.30.21:2377
 # node6
 docker swarm join \
-  --token ..... \
+  --token $SWARM_TOKEN \
   --data-path-addr 192.168.30.26 \
   --advertise-addr 192.168.30.26 \
   192.168.30.21:2377
