@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/3-disable-offloading.sh | sh
+
 log_error() {
     echo -e "ГРЕШКА: $1" >&2
 }
