@@ -15,7 +15,7 @@ docker swarm join-token manager
 export SWARM_TOKEN="......."
 docker swarm join \
   --token $SWARM_TOKEN  \
-  --data-path-addr 192.168.40.42 \
+  --data-path-addr 192.168.30.42 \
   --advertise-addr 192.168.30.42 \
   192.168.30.41:2377
 # node3
