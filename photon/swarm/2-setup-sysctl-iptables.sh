@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/2-setup-sysctl-iptables.sh | sh
+
 # --- КОНФИГУРАЦИОННИ ПРОМЕНЛИВИ ---
 INTERFACE_PUBLIC="eth0"
 INTERFACE_CLUSTER="eth1" 
