@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# dsw1
-#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d1node 192.168.30 eth1 20 | sh
+# Първо: Коригирайте URL адреса (липсва двойна наклонена черта //)
+# Пример за dsw1:
+# curl -s https://raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh | sudo bash -s -- d1node 192.168.30 eth1 20
 
-# dsw2
-#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d2node 192.168.30 eth1 40 | sh
+# Пример за dsw2:
+# curl -s https://raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh | sudo bash -s -- d2node 192.168.30 eth1 40
 
-# dsw3
-#  curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh d3node 192.168.30 eth1 30 | sh
+# Пример за dsw3:
+# curl -s https://raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/1-setup-eth1-static-ip.sh | sudo bash -s -- d3node 192.168.30 eth1 30
 
 # 1. Приемане на параметри
 NODE_PREFIX=$1  # Първи параметър: d3node
@@ -22,10 +23,11 @@ log_error() {
 }
 
 # --- 2. ПРОВЕРКА НА ПАРАМЕТРИТЕ ---
-if [ -z "$NODE_PREFIX" ] || [ -z "$BASE_NETWORK" ]; then
+if [ "$#" -ne 4 ]; then
     log_error "Липсват задължителни параметри."
-    echo "Употреба: $0 <NODE_PREFIX> <BASE_NETWORK> <INTERFACE_CLUSTER>"
-    echo "Пример: $0 d3node 192.168.30 eth1"
+    echo "Очаквани параметри: 4 (подадени: $#)"
+    echo "Употреба: $0 <NODE_PREFIX> <BASE_NETWORK> <INTERFACE_CLUSTER> <STARTING_OCTET>"
+    echo "Пример: $0 d3node 192.168.30 eth1 20"
     exit 1
 fi
 
