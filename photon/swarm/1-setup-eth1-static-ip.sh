@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./1-setup-eth1-static-ip.sh d3node 192.168.30
+# ./1-setup-eth1-static-ip.sh d3node 192.168.30 eth1
 
 # 1. Приемане на параметри
 NODE_PREFIX=$1  # Първи параметър: d3node
