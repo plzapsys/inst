@@ -1,4 +1,61 @@
 
+
+# -------------------- dsw1 cluster ----------------------------------------------------------------------
+# node1
+docker swarm init \
+  --data-path-addr 192.168.30.21 \
+  --advertise-addr 192.168.30.21
+
+docker network create --driver=overlay --attachable obs-net 
+docker network create --driver=overlay --attachable proxy
+
+# for manager 
+docker swarm join-token manager
+
+# node2
+export SWARM_TOKEN="........"
+docker swarm join \
+  --token $SWARM_TOKEN  \
+  --data-path-addr 192.168.30.22 \
+  --advertise-addr 192.168.30.22 \
+  192.168.30.21:2377
+ 
+# node3
+export SWARM_TOKEN="......."
+docker swarm join \
+  --token $SWARM_TOKEN  \
+  --data-path-addr 192.168.30.23 \
+  --advertise-addr 192.168.30.23 \
+  192.168.30.21:2377
+  
+# ---------------------------------------------------------------------------------------------------
+# for worker 
+docker swarm join-token worker
+# node4
+export SWARM_TOKEN="........"
+docker swarm join \
+  --token $SWARM_TOKEN \
+  --data-path-addr 192.168.30.24 \
+  --advertise-addr 192.168.30.24 \
+  192.168.30.21:2377
+  
+# node5
+export SWARM_TOKEN="......"
+docker swarm join \
+  --token $SWARM_TOKEN\
+  --data-path-addr 192.168.30.25 \
+  --advertise-addr 192.168.30.25 \
+  192.168.30.21:2377
+  
+# node6
+export SWARM_TOKEN="......"
+docker swarm join \
+  --token $SWARM_TOKEN \
+  --data-path-addr 192.168.30.26 \
+  --advertise-addr 192.168.30.26 \
+  192.168.30.21:2377
+# ----------------------------------------------------------------------------------------------
+
  
 # -------------------- dsw2 cluster ----------------------------------------------------------------------
 # node1
