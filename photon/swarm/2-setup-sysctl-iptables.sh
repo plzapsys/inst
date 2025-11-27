@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl https:/raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/2-setup-sysctl-iptables.sh | sh
+# curl -s https://raw.githubusercontent.com/plzapsys/inst/main/photon/swarm/2-setup-sysctl-iptables.sh | sudo bash
 
 # --- КОНФИГУРАЦИОННИ ПРОМЕНЛИВИ ---
 INTERFACE_PUBLIC="eth0"
