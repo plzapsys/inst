@@ -32,6 +32,7 @@ quit;
 # Edit file /etc/zabbix/zabbix_server.conf
 vi /etc/zabbix/zabbix_server.conf
 DBPassword=password
+CacheSize=256M
 
 # 8. Start Zabbix server and agent processes
 systemctl restart zabbix-server zabbix-agent httpd php-fpm
