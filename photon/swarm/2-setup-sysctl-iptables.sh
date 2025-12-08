@@ -14,7 +14,7 @@ DISCOVERY_PORT=7946
 OVERLAY_PORT=4789     
 NFS_PORT=2049         
 WEB_PORTS="80,443"    
-ADMIN_PORTS="9010,8080,6379,26379" 
+ADMIN_PORTS="9010,8080,3000,6379,26379" 
 
 # --- 1. КОНФИГУРИРАНЕ НА SYSCTL (Keepalived / Docker Swarm) ---
 echo "--- 1. Конфигуриране на Sysctl (Keepalived / Docker Swarm) ---"
