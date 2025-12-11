@@ -10,7 +10,7 @@ sed -i 's/WAIT_OPTIONS="--wait 1 --wait-interval 20000"/WAIT_OPTIONS="--wait 1"/
 sudo sed -i '/^IPv6AcceptRA=no/aLinkLocalAddressing=no' /etc/systemd/network/50-static-en.network
 sudo sed -i '/^Gateway=/i\[Route]\nDestination=0.0.0.0/0' /etc/systemd/network/50-static-en.network
 tdnf -y update
-tdnf -y install wget mc tcpdump netcat rsync cronie chrony
+tdnf -y install wget mc tcpdump netcat rsync tar cronie chrony
 
 systemctl enable --now chronyd
 # tdnf -y install docker docker-compose traceroute wireshark htop bindutils tar git rsync nfs-utils
