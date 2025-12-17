@@ -27,7 +27,8 @@ systemctl enable --now chronyd
 # # Python Virtual Environment (Venv)
 # python3 -m venv ~/ansible-venv
 # source ~/ansible-venv/bin/activate
-# pip install ansible community.docker
+# pip install ansible
+# ansible-galaxy collection install community.docker
 
 # # global Environment 
 # # pip3 install ansible
