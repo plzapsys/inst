@@ -23,8 +23,15 @@ systemctl enable --now chronyd
 
 # Ansible
 # tdnf install -y python3 python3-pip openssl
-# pip3 install ansible
-# ansible-galaxy collection install community.docker
+
+# # Python Virtual Environment (Venv)
+# python3 -m venv ~/ansible-venv
+# source ~/ansible-venv/bin/activate
+# pip install ansible community.docker
+
+# # global Environment 
+# # pip3 install ansible
+# # ansible-galaxy collection install community.docker
 
 systemctl enable docker
 systemctl start docker
