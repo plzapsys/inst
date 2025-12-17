@@ -28,6 +28,8 @@ systemctl enable --now chronyd
 # python3 -m venv ~/ansible-venv
 # source ~/ansible-venv/bin/activate
 # pip install ansible
+# pip install ansible-lint
+
 # ansible-galaxy collection install community.docker
 # ansible --version
 # ansible-galaxy collection list | grep community.docker
