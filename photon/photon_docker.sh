@@ -21,6 +21,11 @@ systemctl enable --now chronyd
 # systemctl disable iptables
 # systemctl stop iptables
 
+# Ansible
+# tdnf install -y python3 python3-pip openssl
+# pip3 install ansible
+# ansible-galaxy collection install community.docker
+
 systemctl enable docker
 systemctl start docker
 
