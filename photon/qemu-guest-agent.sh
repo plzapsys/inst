@@ -1,1 +1,23 @@
 
+wget https://github.com/plzapsys/inst/blob/main/photon/qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
+rpm -ivh --nosignature qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
+
+# curl -s https://github.com/plzapsys/inst/blob/main/photon/qemu-guest-agent.sh | sudo bash
+
+cat > /etc/systemd/system/qemu-guest-agent.service << EOF
+[Unit]
+Description=QEMU Guest Agent
+BindsTo=dev-virtio\x2dports-org.qemu.guest_agent.0.device
+After=dev-virtio\x2dports-org.qemu.guest_agent.0.device
+
+[Service]
+ExecStart=-/usr/bin/qemu-ga
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl enable qemu-guest-agent
+systemctl start qemu-guest-agent
