@@ -1,24 +1,25 @@
 #!/bin/bash
-set -euo pipefail
+# ------------------------------------------------------------------------------------------------
+# set -euo pipefail
 
-echo "[*] Disabling cloud-init…"
-for svc in cloud-init-local.service cloud-init.service cloud-config.service cloud-final.service; do
-  if systemctl list-unit-files | grep -q "^${svc}"; then
-    systemctl disable --now "$svc" || true
-    systemctl mask "$svc" || true
-  fi
-done
+# echo "[*] Disabling cloud-init…"
+# for svc in cloud-init-local.service cloud-init.service cloud-config.service cloud-final.service; do
+#   if systemctl list-unit-files | grep -q "^${svc}"; then
+#     systemctl disable --now "$svc" || true
+#     systemctl mask "$svc" || true
+#   fi
+# done
 
-echo "[*] Disabling VMware guestinfo / tools / ovf…"
-for pattern in "vmware-tools" "vmtoolsd" "open-vm-tools" "ovfenv" "vmware"; do
-  while read -r unit; do
-    [ -z "$unit" ] && continue
-    echo "  - masking $unit"
-    systemctl disable --now "$unit" 2>/dev/null || true
-    systemctl mask "$unit" 2>/dev/null || true
-  done < <(systemctl list-unit-files | awk '{print $1}' | grep -i "$pattern" || true)
-done
-
+# echo "[*] Disabling VMware guestinfo / tools / ovf…"
+# for pattern in "vmware-tools" "vmtoolsd" "open-vm-tools" "ovfenv" "vmware"; do
+#   while read -r unit; do
+#     [ -z "$unit" ] && continue
+#     echo "  - masking $unit"
+#     systemctl disable --now "$unit" 2>/dev/null || true
+#     systemctl mask "$unit" 2>/dev/null || true
+#   done < <(systemctl list-unit-files | awk '{print $1}' | grep -i "$pattern" || true)
+# done
+# -----------------------------------------------------------------------------------------------
 # Patch Photon bootloader configs
 for cfg in /boot/photon.cfg /boot/linux-*.cfg; do
   if [ -f "$cfg" ]; then
