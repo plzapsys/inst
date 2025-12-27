@@ -1,3 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "[*] Disabling cloud-init…"
+for svc in cloud-init-local.service cloud-init.service cloud-config.service cloud-final.service; do
+  if systemctl list-unit-files | grep -q "^${svc}"; then
+    systemctl disable --now "$svc" || true
+    systemctl mask "$svc" || true
+  fi
+done
+
+echo "[*] Disabling VMware guestinfo / tools / ovf…"
+for pattern in "vmware-tools" "vmtoolsd" "open-vm-tools" "ovfenv" "vmware"; do
+  while read -r unit; do
+    [ -z "$unit" ] && continue
+    echo "  - masking $unit"
+    systemctl disable --now "$unit" 2>/dev/null || true
+    systemctl mask "$unit" 2>/dev/null || true
+  done < <(systemctl list-unit-files | awk '{print $1}' | grep -i "$pattern" || true)
+done
+
+echo "[*] cloud-init and VMware guestinfo have been disabled."
 
 tdnf install -y wget
 wget https://raw.githubusercontent.com/plzapsys/inst/main/photon/qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
