@@ -17,7 +17,7 @@ RestartSec=0
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOT
 
 systemctl enable qemu-guest-agent
 systemctl start qemu-guest-agent
