@@ -4,7 +4,7 @@ rpm -ivh --nosignature qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
 
 # curl -s https://github.com/plzapsys/inst/blob/main/photon/qemu-guest-agent.sh | sudo bash
 
-cat > /etc/systemd/system/qemu-guest-agent.service << EOF
+cat <<EOT | sudo tee /etc/systemd/system/qemu-guest-agent.service > /dev/null
 [Unit]
 Description=QEMU Guest Agent
 BindsTo=dev-virtio\x2dports-org.qemu.guest_agent.0.device
