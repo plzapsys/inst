@@ -2,7 +2,7 @@
 wget https://github.com/plzapsys/inst/blob/main/photon/qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
 rpm -ivh --nosignature qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
 
-# curl -s https://github.com/plzapsys/inst/blob/main/photon/qemu-guest-agent.sh | sudo bash
+#  curl -s https://raw.githubusercontent.com/plzapsys/inst/main/photon/qemu-guest-agent.sh | sudo bash
 
 cat <<EOT | sudo tee /etc/systemd/system/qemu-guest-agent.service > /dev/null
 [Unit]
