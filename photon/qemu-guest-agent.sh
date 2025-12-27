@@ -19,7 +19,14 @@ for pattern in "vmware-tools" "vmtoolsd" "open-vm-tools" "ovfenv" "vmware"; do
   done < <(systemctl list-unit-files | awk '{print $1}' | grep -i "$pattern" || true)
 done
 
-echo "[*] cloud-init and VMware guestinfo have been disabled."
+# Patch Photon bootloader configs
+for cfg in /boot/photon.cfg /boot/linux-*.cfg; do
+  if [ -f "$cfg" ]; then
+    echo "  - Patching $cfg"
+    cp "$cfg" "$cfg.bak.$(date +%s)"   # backup
+    sed -i 's/audit=1/audit=0/g' "$cfg"
+  fi
+done
 
 tdnf install -y wget
 wget https://raw.githubusercontent.com/plzapsys/inst/main/photon/qemu-guest-agent-8.1.0-1.ph5.x86_64.rpm
