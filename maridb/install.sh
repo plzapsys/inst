@@ -34,6 +34,18 @@ exit
 # login on console
 ulimit -n
 
+# Kernel config
+# /etc/sysctl.conf
+echo "" >> /etc/sysctl.conf
+echo "" >> /etc/sysctl.conf
+echo "vm.swappiness = 1" >> /etc/sysctl.conf
+echo "vm.dirty_ratio = 15" >> /etc/sysctl.conf
+echo "vm.dirty_background_ratio = 5" >> /etc/sysctl.conf
+echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+
+sysctl -p
+
+
 # add custom config 
 wget -P /etc/my.cnf.d/ https://raw.githubusercontent.com/plzapsys/inst/main/maridb/custom.cnf
 
