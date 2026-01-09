@@ -1,4 +1,3 @@
-
 [client]
 default-character-set = utf8mb4
 
@@ -7,22 +6,18 @@ default-character-set = utf8mb4
 collation-server = utf8mb4_unicode_ci
 init-connect = 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci'
 character-set-server = utf8mb4
-default-authentication-plugin = mysql_native_password
 skip-external-locking
-skip-name-resolve
 performance_schema = 0
 max_allowed_packet = 256M
-open_files_limit = 50000
+open_files_limit = 32768
 max_connections = 400
 
 # --- InnoDB Core ---
 innodb_buffer_pool_size = 16G
-innodb_buffer_pool_instances = 8
 innodb_log_file_size = 512M
 innodb_log_buffer_size = 64M
 innodb_flush_log_at_trx_commit = 1
 innodb_flush_method = O_DIRECT
-innodb_file_per_table = 1
 innodb_doublewrite = 1
 
 # --- InnoDB I/O & Threads ---
@@ -54,7 +49,5 @@ long_query_time = 1
 log_queries_not_using_indexes = 0
 
 # --- Compression ---
-innodb_compression_default = ON
-innodb_compression_algorithm = lz4
-
-
+# MariaDB supports only zlib or none
+innodb_compression_default = OFF
