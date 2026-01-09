@@ -34,6 +34,15 @@ exit
 # login on console
 ulimit -n
 
+# set 
+systemctl edit mariadb
+
+[Service]
+LimitNOFILE=65535
+# --------------------------------
+systemctl daemon-reload
+systemctl restart mariadb
+
 # Kernel config
 # /etc/sysctl.conf
 echo "" >> /etc/sysctl.conf
