@@ -45,6 +45,9 @@ echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 
 sysctl -p
 
+mkdir /var/log/mariadb
+touch /var/log/mariadb/mariadb-slow.log
+chmod 777 /var/log/mariadb/mariadb-slow.log
 
 # add custom config 
 wget -P /etc/my.cnf.d/ https://raw.githubusercontent.com/plzapsys/inst/main/maridb/custom.cnf
